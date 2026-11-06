@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+  :root {
+    --container-width: 100%;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --container-width: 90%;
+  }
+}

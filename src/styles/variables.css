@@ -1,0 +1,22 @@
+:root {
+  /* Alpine Ascents Brand Colours */
+  --color-primary: #102A43;
+  --color-background: #F4F7FA;
+  --color-secondary: #6B8295;
+  --color-accent: #8CCFE8;
+  --color-dark: #263746;
+  --color-highlight: #D5AD67;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', Arial, sans-serif;
+
+  /* Layout */
+  --container-width: 1200px;
+  --border-radius: 8px;
+
+  /* Effects */
+  --shadow: 0 4px 20px rgba(16, 42, 67, 0.08);
+  --transition: all 0.3s ease;
+}
