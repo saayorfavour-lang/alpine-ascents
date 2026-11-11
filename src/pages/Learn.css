@@ -1,0 +1,261 @@
+
+.learn-page {
+  background: #F4F0E6;
+  color: #252722;
+  min-height: 100vh;
+}
+
+
+.learn-hero {
+  min-height: 390px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 80px 8%;
+  background:
+    linear-gradient(
+      rgba(20, 28, 24, 0.58),
+      rgba(20, 28, 24, 0.68)
+    ),
+    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b")
+    center 45% / cover no-repeat;
+}
+
+.learn-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.learn-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  color: #F4F0E6;
+}
+
+.learn-eyebrow,
+.learn-section-heading > span,
+.learn-detail-heading > span {
+  color: #C6A15B;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.learn-content h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(48px, 7vw, 76px);
+  line-height: 1.05;
+  margin: 18px 0;
+  color: #F4F0E6 !important;
+}
+
+.learn-content p {
+  max-width: 570px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #FFFFFF;
+}
+
+
+
+.learn-topics {
+  padding: 85px 8%;
+}
+
+.learn-section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 45px;
+}
+
+.learn-section-heading h2,
+.learn-detail-heading h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(34px, 5vw, 48px);
+  margin: 14px 0;
+  color: #183C32;
+}
+
+.learn-section-heading p,
+.learn-detail-heading p {
+  color: #50564F;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+
+.learn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+
+.learn-card {
+  background: #FFFFFF;
+  border: 1px solid #E6DFCE;
+  border-radius: 5px;
+  padding: 30px 25px;
+  min-height: 235px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s ease;
+  color: #183C32;
+  font-family: inherit;
+}
+
+.learn-card:hover,
+.learn-card.active {
+  border-color: #C6A15B;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(24, 60, 50, 0.12);
+}
+
+.learn-card.active {
+  background: #183C32;
+  color: #F4F0E6;
+}
+
+.learn-card-icon {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.learn-card h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  margin: 0 0 12px;
+  color: #183C32;
+}
+
+.learn-card.active h3 {
+  color: #F4F0E6;
+}
+
+.learn-card p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #50564F;
+}
+
+.learn-card.active p {
+  color: #F4F0E6;
+}
+
+.learn-card-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #183C32;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.learn-card.active .learn-card-link {
+  color: #E3C47E;
+}
+
+
+.learn-detail {
+  margin-top: 55px;
+  padding: 45px;
+  background: #FFFFFF;
+  border-top: 3px solid #C6A15B;
+  border-radius: 5px;
+  animation: learnFade 0.35s ease;
+}
+
+.learn-detail-heading {
+  max-width: 750px;
+  margin-bottom: 35px;
+}
+
+.learn-detail-heading h2 {
+  color: #183C32;
+}
+
+.learn-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.learn-detail-item {
+  display: flex;
+  gap: 18px;
+  padding: 22px 0;
+  border-bottom: 1px solid #E9E5DB;
+}
+
+.learn-number {
+  color: #A78336;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.learn-detail-item h3 {
+  color: #183C32;
+  font-size: 17px;
+  margin: 3px 0 10px;
+}
+
+.learn-detail-item p {
+  color: #50564F;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+
+
+@keyframes learnFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .learn-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .learn-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  .learn-hero {
+    min-height: 320px;
+    padding: 60px 7%;
+  }
+
+  .learn-topics {
+    padding: 60px 6%;
+  }
+
+  .learn-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-card {
+    min-height: 200px;
+  }
+
+  .learn-detail {
+    padding: 25px 20px;
+  }
+}

@@ -1,15 +1,19 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Ticker from './components/Ticker';
 
 import Home from './pages/Home';
-import Mountains from './pages/Mountains'
-import Destinations from './pages/Destinations'
-import Gallery from './pages/Gallery'
-import About from './pages/About'
-import Contact from './pages/Contact'
+import Learn from './pages/Learn';
+import Explore from './pages/Explore';
+import SuccessStories from './pages/SuccessStories';
+import Latest from './pages/Latest';
+import Contact from './pages/Contact';
+import LearnTopic from './pages/LearnTopic';
+
+import './App.css';
 
 function App() {
   return (
@@ -19,17 +23,21 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/mountains" element={<Mountains />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/learn" element={<Learn />} />
+
+          <Route path="/learn/:topicId" element={<LearnTopic />} />
+
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/latest" element={<Latest />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
 
+      <Ticker />
       <Footer />
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
