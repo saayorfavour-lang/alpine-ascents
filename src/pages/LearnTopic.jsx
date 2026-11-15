@@ -1,5 +1,6 @@
 
 import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
 import './LearnTopic.css';
 
 const topics = {
@@ -98,6 +99,16 @@ const topics = {
         heading: 'Respect the mountain',
         text: 'Leave no litter, respect wildlife and local communities, and follow responsible outdoor practices.'
       }
+    ],
+    checklist: [
+      'Check the weather forecast before climbing.',
+      'Choose a route suitable for your experience.',
+      'Inform someone about your route and expected return.',
+      'Pack enough food and drinking water.',
+      'Wear appropriate clothing and footwear.',
+      'Carry a first-aid kit.',
+      'Bring a charged phone and navigation equipment.',
+      'Understand when to turn back or seek help.'
     ]
   }
 };
@@ -105,6 +116,16 @@ const topics = {
 function LearnTopic() {
   const { topicId } = useParams();
   const topic = topics[topicId];
+
+  const [checkedItems, setCheckedItems] = useState([]);
+
+  const handleCheck = (index) => {
+    setCheckedItems((previousItems) =>
+      previousItems.includes(index)
+        ? previousItems.filter((item) => item !== index)
+        : [...previousItems, index]
+    );
+  };
 
   if (!topic) {
     return (
@@ -115,14 +136,25 @@ function LearnTopic() {
     );
   }
 
+  const progress = topic.checklist
+    ? Math.round(
+        (checkedItems.length / topic.checklist.length) * 100
+      )
+    : 0;
+
   return (
     <section className="topic-page">
       <div className="topic-content">
-        <p className="topic-label">ALPINE ASCENTS · LEARNING CENTRE</p>
+
+        <p className="topic-label">
+          ALPINE ASCENTS · LEARNING CENTRE
+        </p>
 
         <h1>{topic.title}</h1>
 
-        <p className="topic-intro">{topic.intro}</p>
+        <p className="topic-intro">
+          {topic.intro}
+        </p>
 
         {topic.sections.map((section, index) => (
           <article className="topic-section" key={index}>
@@ -131,9 +163,80 @@ function LearnTopic() {
           </article>
         ))}
 
+        {topic.checklist && (
+          <div className="guidelines-checklist">
+
+            <div className="checklist-heading">
+              <div>
+                <p className="checklist-label">BE PREPARED</p>
+                <h2>Mountain Safety Checklist</h2>
+                <p>
+                  Review these important preparations before your climb.
+                </p>
+              </div>
+
+              <span className="checklist-count">
+                {checkedItems.length}/{topic.checklist.length}
+              </span>
+            </div>
+
+            <div className="checklist-progress">
+              <div
+                className="checklist-progress-fill"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+
+            <p className="checklist-progress-text">
+              {progress}% reviewed
+            </p>
+
+            <div className="checklist-items">
+              {topic.checklist.map((item, index) => (
+                <label
+                  key={index}
+                  className={`guideline-check-item ${
+                    checkedItems.includes(index) ? 'checked' : ''
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={checkedItems.includes(index)}
+                    onChange={() => handleCheck(index)}
+                  />
+
+                  <span>{item}</span>
+                </label>
+              ))}
+            </div>
+
+            {checkedItems.length === topic.checklist.length && (
+              <p className="checklist-complete">
+                You have reviewed every checklist item. Stay prepared
+                and continue following current mountain safety advice.
+              </p>
+            )}
+
+            <button
+              className="checklist-reset"
+              type="button"
+              onClick={() => setCheckedItems([])}
+            >
+              Reset checklist
+            </button>
+
+            <p className="checklist-note">
+              This checklist is a preparation aid, not a guarantee
+              that a climb is safe.
+            </p>
+
+          </div>
+        )}
+
         <Link to="/learn" className="topic-back">
           ← Back to Learning Centre
         </Link>
+
       </div>
     </section>
   );
