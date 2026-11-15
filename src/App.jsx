@@ -1,5 +1,4 @@
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -15,18 +14,18 @@ import LearnTopic from './pages/LearnTopic';
 
 import './App.css';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+
   return (
-    <BrowserRouter>
+    <>
       <Header />
 
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />} />
-
           <Route path="/learn/:topicId" element={<LearnTopic />} />
-
           <Route path="/explore" element={<Explore />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/latest" element={<Latest />} />
@@ -35,7 +34,16 @@ function App() {
       </main>
 
       <Ticker />
-      <Footer />
+
+      {location.pathname !== '/' && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
