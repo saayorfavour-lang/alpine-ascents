@@ -150,7 +150,7 @@
   margin-top: 12px;
   color: #183C32;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .learn-card.active .learn-card-link {
@@ -192,7 +192,7 @@
 .learn-number {
   color: #A78336;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 27px;
+  font-size: 30px;
   font-weight: 700;
 }
 
