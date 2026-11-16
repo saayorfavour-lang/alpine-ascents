@@ -1,0 +1,42 @@
+[
+  {
+    "id": "everest-2026",
+    "title": "Everest 2026: a record spring season",
+    "category": "Current",
+    "date": "Spring 2026",
+    "summary": "Nepal issued nearly 500 Everest permits and season summaries report roughly 1,000 summits, including a single-day record of 274 on 20 May. Kami Rita Sherpa reached the summit for a record 32nd time, and Nepal raised the Everest climbing fee from US$11,000 to US$15,000.",
+    "wiki": "Mount_Everest",
+    "sourceName": "Alan Arnette: Everest 2026 season summary",
+    "sourceUrl": "https://www.alanarnette.com/2026/06/02/everest-2026-season-summary-records-crowds-trash-winds/"
+  },
+  {
+    "id": "k2-winter-2021",
+    "title": "First winter ascent of K2",
+    "category": "Recent history",
+    "date": "16 January 2021",
+    "summary": "A team of Nepali climbers reached the summit of K2 in winter, the last of the 8,000-metre peaks to be climbed in that season.",
+    "wiki": "K2",
+    "sourceName": "Wikipedia: K2",
+    "sourceUrl": "https://en.wikipedia.org/wiki/K2"
+  },
+  {
+    "id": "everest-height-2020",
+    "title": "Everest re-measured",
+    "category": "Recent history",
+    "date": "8 December 2020",
+    "summary": "Nepal and China jointly announced a new official height for Mount Everest of 8,848.86 metres.",
+    "wiki": "Mount_Everest",
+    "sourceName": "Wikipedia: Mount Everest",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Mount_Everest"
+  },
+  {
+    "id": "glaciers",
+    "title": "Glacier retreat is changing mountain routes",
+    "category": "Ongoing",
+    "date": "Ongoing",
+    "summary": "Retreating glaciers and thawing permafrost are changing Alpine routes and increasing the risk of rockfall, so climbers must check current conditions before every trip.",
+    "wiki": "Retreat_of_glaciers_since_1850",
+    "sourceName": "Wikipedia: Retreat of glaciers since 1850",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Retreat_of_glaciers_since_1850"
+  }
+]

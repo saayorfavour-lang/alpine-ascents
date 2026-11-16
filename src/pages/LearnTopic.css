@@ -63,12 +63,139 @@
   text-decoration: underline;
 }
 
+
+
+.guidelines-checklist {
+  margin-top: 45px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e5e1d7;
+  border-radius: 14px;
+}
+
+.checklist-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.checklist-label {
+  color: #b08b45;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.checklist-heading h2 {
+  color: #183c32;
+  font-size: 24px;
+  margin: 8px 0;
+}
+
+.checklist-heading p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.checklist-count {
+  color: #183c32;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.checklist-progress {
+  height: 8px;
+  margin-top: 25px;
+  background: #e9e9e2;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.checklist-progress-fill {
+  height: 100%;
+  background: #183c32;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.checklist-progress-text {
+  color: #777;
+  font-size: 13px;
+  text-align: right;
+}
+
+.checklist-items {
+  display: grid;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.guideline-check-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid #e5e1d7;
+  border-radius: 9px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.guideline-check-item:hover {
+  background: #f7f8f5;
+}
+
+.guideline-check-item.checked {
+  background: #edf4ef;
+  color: #183c32;
+}
+
+.guideline-check-item input {
+  width: 18px;
+  height: 18px;
+  accent-color: #183c32;
+  cursor: pointer;
+}
+
+.checklist-complete {
+  margin-top: 20px;
+  padding: 14px;
+  background: #edf4ef;
+  color: #183c32;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+.checklist-reset {
+  margin-top: 22px;
+  padding: 11px 20px;
+  background: #183c32;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.checklist-reset:hover {
+  background: #285747;
+}
+
+.checklist-note {
+  margin-top: 18px;
+  color: #777;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
 @media (max-width: 600px) {
-  .topic-page {
-    padding: 55px 7%;
+  .guidelines-checklist {
+    padding: 20px;
   }
 
-  .topic-intro {
-    font-size: 17px;
+  .checklist-heading h2 {
+    font-size: 20px;
   }
 }
+
