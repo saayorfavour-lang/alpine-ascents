@@ -20,6 +20,7 @@ function Header() {
   return (
     <header className="site-header">
 
+      {/* Brand Logo */}
       <Link to="/" className="brand">
         <div className="brand-icon">▲</div>
         <h2>
@@ -27,9 +28,14 @@ function Header() {
         </h2>
       </Link>
 
+      {/* Navigation Links */}
       <nav className="navigation">
-        <NavLink to="/" end>Home</NavLink>
 
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+
+        {/* Learn Dropdown */}
         <div className="learn-menu">
           <button
             type="button"
@@ -42,7 +48,9 @@ function Header() {
 
           {learnOpen && (
             <div className="learn-dropdown">
-              <p className="dropdown-heading">LEARNING CENTRE</p>
+              <p className="dropdown-heading">
+                LEARNING CENTRE
+              </p>
 
               {learnTopics.map((topic) => (
                 <Link
@@ -58,13 +66,29 @@ function Header() {
           )}
         </div>
 
-        <NavLink to="/explore">Explore</NavLink>
-        <NavLink to="/success-stories">Success Stories</NavLink>
-        <NavLink to="/latest">Latest</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        {/* Explore Page */}
+        <NavLink to="/explore" end>
+          Explore
+        </NavLink>
+
+        {/* Success Stories Page */}
+        <NavLink to="/success-stories" end>
+          Success Stories
+        </NavLink>
+
+        <NavLink to="/latest">
+          Latest
+        </NavLink>
+
+        <NavLink to="/contact">
+          Contact
+        </NavLink>
+
       </nav>
 
+      {/* Right Side of Header */}
       <div className="header-right">
+
         <div className="visitor-count">
           <span>VISITS</span>
           <strong>{visits}</strong>
@@ -73,6 +97,7 @@ function Header() {
         <Link to="/explore" className="header-cta">
           Plan Your Climb <span>→</span>
         </Link>
+
       </div>
 
     </header>
