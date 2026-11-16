@@ -6,11 +6,12 @@ import Ticker from './components/Ticker';
 
 import Home from './pages/Home';
 import Learn from './pages/Learn';
-import Explore from './pages/Explore';
-import SuccessStories from './pages/SuccessStories';
+import LearnTopic from './pages/LearnTopic';
 import Latest from './pages/Latest';
 import Contact from './pages/Contact';
-import LearnTopic from './pages/LearnTopic';
+
+import ExploreSection from './components/ExploreSection';
+import SuccessStoriesSection from './components/SuccessStoriesSection';
 
 import './App.css';
 
@@ -26,8 +27,8 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/learn/:topicId" element={<LearnTopic />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/explore" element={<ExploreSection />} />
+          <Route path="/success-stories" element={<SuccessStoriesSection />} />
           <Route path="/latest" element={<Latest />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
