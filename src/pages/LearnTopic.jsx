@@ -1,91 +1,117 @@
 
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
 import './LearnTopic.css';
 
 const topics = {
   history: {
     title: 'History of Mountaineering',
-    intro: 'Discover how mountaineering developed into an international pursuit.',
+    intro:
+      'Mountaineering has developed over centuries, from early exploration to the organised climbing activities we know today.',
     sections: [
       {
-        heading: 'The beginnings',
-        text: 'People have travelled through mountain regions for centuries for trade, exploration, work and cultural reasons. Over time, organised climbing expeditions developed into a recognised activity.'
+        heading: 'Early mountain exploration',
+        text: 'Mountains were explored for travel, trade, religious purposes and scientific discovery. Over time, people began climbing them for adventure and exploration.'
       },
       {
-        heading: 'The modern era',
-        text: 'Improved equipment, maps, training and weather knowledge helped climbers explore increasingly challenging mountain routes.'
+        heading: 'The development of modern mountaineering',
+        text: 'As equipment, knowledge and climbing techniques improved, mountaineering developed into a recognised outdoor activity.'
+      },
+      {
+        heading: 'Mountaineering today',
+        text: 'Modern mountaineering includes different forms of climbing and exploration. Training, preparation, responsible behaviour and safety knowledge remain important.'
       }
     ]
   },
 
   hazards: {
     title: 'Mountain Hazards',
-    intro: 'Understand the natural conditions that can make mountain environments challenging.',
+    intro:
+      'Mountain environments can change quickly. Understanding possible hazards helps visitors make informed decisions and prepare responsibly.',
     sections: [
       {
-        heading: 'Weather and altitude',
-        text: 'Mountain weather can change quickly. Cold temperatures, strong winds, storms and reduced oxygen at higher elevations require careful preparation.'
+        heading: 'Weather conditions',
+        text: 'Mountain weather can change rapidly. Rain, snow, strong winds, fog and low temperatures can affect visibility and travel conditions.'
       },
       {
         heading: 'Terrain hazards',
-        text: 'Loose rocks, steep slopes, falling ice and unstable snow are examples of terrain hazards. Learning about local conditions helps people make safer decisions.'
+        text: 'Uneven ground, loose rocks, steep slopes and slippery surfaces can make mountain routes difficult to navigate.'
+      },
+      {
+        heading: 'Environmental awareness',
+        text: 'Visitors should pay attention to their surroundings, follow local guidance and avoid continuing when conditions become unsuitable.'
       }
     ]
   },
 
   safety: {
     title: 'Mountain Safety',
-    intro: 'Learn the principles of preparation, awareness and responsible mountain travel.',
+    intro:
+      'Mountain safety involves planning carefully, understanding the environment and making responsible decisions throughout an outdoor activity.',
     sections: [
       {
-        heading: 'Preparation',
-        text: 'Before a mountain trip, understand the route, check current weather information, consider your experience and make sure your group is properly prepared.'
+        heading: 'Preparation and planning',
+        text: 'Research the route, check weather information and understand the level of difficulty before beginning a mountain activity.'
       },
       {
-        heading: 'Making safe decisions',
-        text: 'Good mountain judgement includes recognising changing conditions, communicating with your group and being willing to change plans when necessary.'
+        heading: 'Equipment and clothing',
+        text: 'Appropriate clothing, suitable footwear, enough food and drinking water, and essential emergency supplies support safer outdoor activities.'
+      },
+      {
+        heading: 'Responsible decisions',
+        text: 'Stay aware of changing conditions, communicate with your group and follow the advice of qualified mountain professionals.'
       }
     ]
   },
 
   sheltering: {
     title: 'Sheltering',
-    intro: 'Explore the role of shelter in protecting people from mountain conditions.',
+    intro:
+      'Sheltering is an important part of outdoor preparation. Understanding shelter options helps visitors plan for changing environmental conditions.',
     sections: [
       {
         heading: 'Why shelter matters',
-        text: 'Shelter helps protect people from wind, rain, snow and cold. The right shelter depends on the environment, the season and the needs of the group.'
+        text: 'Suitable shelter can provide protection from wind, rain, cold and other environmental conditions during outdoor activities.'
       },
       {
-        heading: 'Planning ahead',
-        text: 'Understand the shelter options available along a route and include suitable emergency arrangements in your trip planning.'
+        heading: 'Types of shelter',
+        text: 'Outdoor shelters may include tents, designated mountain huts and established shelters provided along certain routes.'
+      },
+      {
+        heading: 'Responsible shelter use',
+        text: 'Choose designated shelter areas where available, follow local instructions and leave the surrounding environment clean.'
       }
     ]
   },
 
   types: {
     title: 'Types of Mountains',
-    intro: 'Explore how mountains are classified and how different mountain landscapes form.',
+    intro:
+      'Mountains are formed through different geological processes. Their shapes, structures and landscapes vary across the world.',
     sections: [
       {
         heading: 'Fold mountains',
-        text: 'Fold mountains form when sections of the Earth’s crust are compressed and pushed upwards. The Himalayas are a well-known example.'
+        text: 'Fold mountains form when sections of the Earth’s crust are compressed and pushed together, causing layers of rock to fold.'
       },
       {
         heading: 'Volcanic mountains',
-        text: 'Volcanic mountains form through volcanic activity, as erupted material builds up around a volcanic opening.'
+        text: 'Volcanic mountains form through volcanic activity as lava and other materials accumulate around a volcanic opening.'
       },
       {
-        heading: 'Block and dome mountains',
-        text: 'Block mountains form through movements along faults in the Earth’s crust. Dome mountains form when large areas of rock are uplifted.'
+        heading: 'Block mountains',
+        text: 'Block mountains form when large sections of the Earth’s crust move along faults, creating raised or lowered blocks of land.'
+      },
+      {
+        heading: 'Dome mountains',
+        text: 'Dome mountains develop when underground forces push rock layers upward, creating a rounded shape.'
       }
     ]
   },
 
   guidelines: {
     title: 'Safety Guidelines',
-    intro: 'Review essential principles for responsible and informed mountain activities.',
+    intro:
+      'Following responsible safety guidelines helps visitors prepare for mountain activities, understand possible risks and make informed decisions.',
     sections: [
       {
         heading: 'Before your trip',
@@ -117,7 +143,42 @@ function LearnTopic() {
   const { topicId } = useParams();
   const topic = topics[topicId];
 
-  const [checkedItems, setCheckedItems] = useState([]);
+  const [checkedItems, setCheckedItems] = useState(() => {
+    try {
+      const savedItems = localStorage.getItem('alpineSafetyChecklist');
+
+      if (!savedItems) {
+        return [];
+      }
+
+      const parsedItems = JSON.parse(savedItems);
+
+      if (!Array.isArray(parsedItems)) {
+        return [];
+      }
+
+      return parsedItems.filter(
+        (item) =>
+          Number.isInteger(item) &&
+          item >= 0 &&
+          item < topics.guidelines.checklist.length
+      );
+    } catch (error) {
+      console.error('Could not load checklist progress:', error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        'alpineSafetyChecklist',
+        JSON.stringify(checkedItems)
+      );
+    } catch (error) {
+      console.error('Could not save checklist progress:', error);
+    }
+  }, [checkedItems]);
 
   const handleCheck = (index) => {
     setCheckedItems((previousItems) =>
@@ -127,34 +188,40 @@ function LearnTopic() {
     );
   };
 
+  const resetChecklist = () => {
+    setCheckedItems([]);
+  };
+
   if (!topic) {
     return (
       <section className="topic-page">
-        <h1>Topic not found</h1>
-        <Link to="/learn">Return to Learn</Link>
+        <div className="topic-content">
+          <h1>Topic not found</h1>
+          <p>The learning topic you requested could not be found.</p>
+          <Link to="/learn" className="topic-back">
+            Return to Learning Centre
+          </Link>
+        </div>
       </section>
     );
   }
 
-  const progress = topic.checklist
-    ? Math.round(
-        (checkedItems.length / topic.checklist.length) * 100
-      )
-    : 0;
+  const checklist = topic.checklist || [];
+  const progress =
+    checklist.length > 0
+      ? Math.round((checkedItems.length / checklist.length) * 100)
+      : 0;
 
   return (
     <section className="topic-page">
       <div className="topic-content">
-
         <p className="topic-label">
           ALPINE ASCENTS · LEARNING CENTRE
         </p>
 
         <h1>{topic.title}</h1>
 
-        <p className="topic-intro">
-          {topic.intro}
-        </p>
+        <p className="topic-intro">{topic.intro}</p>
 
         {topic.sections.map((section, index) => (
           <article className="topic-section" key={index}>
@@ -165,22 +232,30 @@ function LearnTopic() {
 
         {topic.checklist && (
           <div className="guidelines-checklist">
-
             <div className="checklist-heading">
               <div>
                 <p className="checklist-label">BE PREPARED</p>
+
                 <h2>Mountain Safety Checklist</h2>
+
                 <p>
                   Review these important preparations before your climb.
                 </p>
               </div>
 
               <span className="checklist-count">
-                {checkedItems.length}/{topic.checklist.length}
+                {checkedItems.length}/{checklist.length}
               </span>
             </div>
 
-            <div className="checklist-progress">
+            <div
+              className="checklist-progress"
+              role="progressbar"
+              aria-label="Checklist completion"
+              aria-valuenow={progress}
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
               <div
                 className="checklist-progress-fill"
                 style={{ width: `${progress}%` }}
@@ -192,7 +267,7 @@ function LearnTopic() {
             </p>
 
             <div className="checklist-items">
-              {topic.checklist.map((item, index) => (
+              {checklist.map((item, index) => (
                 <label
                   key={index}
                   className={`guideline-check-item ${
@@ -210,7 +285,7 @@ function LearnTopic() {
               ))}
             </div>
 
-            {checkedItems.length === topic.checklist.length && (
+            {checkedItems.length === checklist.length && (
               <p className="checklist-complete">
                 You have reviewed every checklist item. Stay prepared
                 and continue following current mountain safety advice.
@@ -220,7 +295,7 @@ function LearnTopic() {
             <button
               className="checklist-reset"
               type="button"
-              onClick={() => setCheckedItems([])}
+              onClick={resetChecklist}
             >
               Reset checklist
             </button>
@@ -229,14 +304,12 @@ function LearnTopic() {
               This checklist is a preparation aid, not a guarantee
               that a climb is safe.
             </p>
-
           </div>
         )}
 
         <Link to="/learn" className="topic-back">
           ← Back to Learning Centre
         </Link>
-
       </div>
     </section>
   );
