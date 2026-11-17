@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import "./Learn.css";
 
@@ -33,6 +34,36 @@ const topics = [
       {
         heading: "1978 — Without bottled oxygen",
         text: "Reinhold Messner and Peter Habeler climbed Everest without supplemental oxygen."
+      }
+    ]
+  },
+  {
+    id: "sheltering",
+    title: "Sheltering",
+    icon: "⛺",
+    description: "Understand shelter options and protection in mountain environments.",
+    intro:
+      "Shelter protects mountaineers from wind, rain, cold and other environmental conditions during outdoor trips.",
+    sections: [
+      {
+        heading: "Mountaineering Tents",
+        text: "Purpose-built tents provide protection from wind, rain and cold. Choose one suitable for the expected conditions."
+      },
+      {
+        heading: "Mountain Huts",
+        text: "Established mountain huts provide designated resting and overnight accommodation in some mountain regions."
+      },
+      {
+        heading: "Choosing a Safe Location",
+        text: "Use designated campsites and avoid exposed ridges, unstable slopes, avalanche paths and areas beneath loose rocks."
+      },
+      {
+        heading: "Keeping Warm",
+        text: "Wear suitable layers, keep clothing dry and use appropriate sleeping equipment."
+      },
+      {
+        heading: "Leave No Trace",
+        text: "Respect the environment, dispose of waste properly and leave natural surroundings undisturbed."
       }
     ]
   },
@@ -93,36 +124,6 @@ const topics = [
       {
         heading: "Emergency Preparation",
         text: "Know how to contact local emergency services and share your route and expected return time."
-      }
-    ]
-  },
-  {
-    id: "sheltering",
-    title: "Sheltering",
-    icon: "⛺",
-    description: "Understand shelter options and protection in mountain environments.",
-    intro:
-      "Shelter protects mountaineers from wind, rain, cold and other environmental conditions during outdoor trips.",
-    sections: [
-      {
-        heading: "Mountaineering Tents",
-        text: "Purpose-built tents provide protection from wind, rain and cold. Choose one suitable for the expected conditions."
-      },
-      {
-        heading: "Mountain Huts",
-        text: "Established mountain huts provide designated resting and overnight accommodation in some mountain regions."
-      },
-      {
-        heading: "Choosing a Safe Location",
-        text: "Use designated campsites and avoid exposed ridges, unstable slopes, avalanche paths and areas beneath loose rocks."
-      },
-      {
-        heading: "Keeping Warm",
-        text: "Wear suitable layers, keep clothing dry and use appropriate sleeping equipment."
-      },
-      {
-        heading: "Leave No Trace",
-        text: "Respect the environment, dispose of waste properly and leave natural surroundings undisturbed."
       }
     ]
   },
@@ -195,10 +196,6 @@ const topics = [
 function Learn() {
   const [activeTopic, setActiveTopic] = useState(null);
 
-  const selectedTopic = topics.find(
-    (topic) => topic.id === activeTopic
-  );
-
   return (
     <div className="learn-page">
       <section className="learn-hero">
@@ -226,59 +223,67 @@ function Learn() {
           </p>
         </div>
 
-        <div className="learn-grid">
-          {topics.map((topic) => (
-            <button
-              key={topic.id}
-              className={`learn-card ${
-                activeTopic === topic.id ? "active" : ""
-              }`}
-              onClick={() =>
-                setActiveTopic(
-                  activeTopic === topic.id ? null : topic.id
-                )
-              }
-              aria-expanded={activeTopic === topic.id}
-            >
-              <span className="learn-card-icon">{topic.icon}</span>
+        <div className="learn-list">
+          {topics.map((topic) => {
+            const isActive = activeTopic === topic.id;
 
-              <h3>{topic.title}</h3>
+            return (
+              <div className="learn-topic" key={topic.id}>
+                <button
+                  type="button"
+                  className={`learn-card ${isActive ? "active" : ""}`}
+                  onClick={() =>
+                    setActiveTopic(isActive ? null : topic.id)
+                  }
+                  aria-expanded={isActive}
+                >
+                  <span className="learn-card-icon">{topic.icon}</span>
 
-              <p>{topic.description}</p>
-
-              <span className="learn-card-link">
-                {activeTopic === topic.id
-                  ? "Close topic −"
-                  : "Explore topic →"}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {selectedTopic && (
-          <article className="learn-detail" key={selectedTopic.id}>
-            <div className="learn-detail-heading">
-              <span>YOUR LEARNING JOURNEY</span>
-              <h2>{selectedTopic.title}</h2>
-              <p>{selectedTopic.intro}</p>
-            </div>
-
-            <div className="learn-detail-grid">
-              {selectedTopic.sections.map((section, index) => (
-                <div className="learn-detail-item" key={section.heading}>
-                  <span className="learn-number">
-                    {String(index + 1).padStart(2, "0")}
+                  <span className="learn-card-text">
+                    <span className="learn-card-title">
+                      {topic.title}
+                    </span>
+                    <span className="learn-card-description">
+                      {topic.description}
+                    </span>
                   </span>
 
-                  <div>
-                    <h3>{section.heading}</h3>
-                    <p>{section.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </article>
-        )}
+                  <span className="learn-card-link">
+                    {isActive ? "Close topic −" : "Explore topic +"}
+                  </span>
+                </button>
+
+                {isActive && (
+                  <article className="learn-detail">
+                    <div className="learn-detail-heading">
+                      <span>YOUR LEARNING JOURNEY</span>
+                      <h2>{topic.title}</h2>
+                      <p>{topic.intro}</p>
+                    </div>
+
+                    <div className="learn-detail-grid">
+                      {topic.sections.map((section, index) => (
+                        <div
+                          className="learn-detail-item"
+                          key={section.heading}
+                        >
+                          <span className="learn-number">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+
+                          <div>
+                            <h3>{section.heading}</h3>
+                            <p>{section.text}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

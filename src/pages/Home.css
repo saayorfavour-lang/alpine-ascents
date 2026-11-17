@@ -13,15 +13,18 @@
   box-sizing: border-box;
   padding: 60px 7%;
 
-  background:
+  background-image:
     linear-gradient(
       90deg,
       rgba(20, 27, 25, 0.70) 0%,
       rgba(20, 27, 25, 0.38) 50%,
       rgba(20, 27, 25, 0.08) 100%
     ),
-    url('https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg/1920px-Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg')
-    center 35% / cover no-repeat;
+    url('/images/mountain-hiker.jpg');
+
+  background-position: center, center 35%;
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
 }
 
 .hero-content {
@@ -83,7 +86,7 @@
 }
 
 .btn-primary {
-  background:#C6A15B;
+  background: #C6A15B;
   color: #183C32;
   border: 1px solid #F4F0E6;
 }
@@ -146,7 +149,7 @@
   .hero {
     min-height: 680px;
     padding: 50px 6%;
-    background-position: center;
+    background-position: center, center;
   }
 
   .hero-content h1 {
@@ -166,7 +169,7 @@
   .hero {
     min-height: 680px;
     padding: 40px 7%;
-    background-position: 58% center;
+    background-position: center, 58% center;
   }
 
   .hero-content {

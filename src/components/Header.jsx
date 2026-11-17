@@ -1,6 +1,5 @@
-
-import { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import useVisitorCounter from '../hooks/useVisitorCounter';
 import './Header.css';
 
@@ -16,11 +15,32 @@ const learnTopics = [
 function Header() {
   const visits = useVisitorCounter();
   const [learnOpen, setLearnOpen] = useState(false);
+  const learnMenuRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    setLearnOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    function handleOutsideTap(event) {
+      if (
+        learnMenuRef.current &&
+        !learnMenuRef.current.contains(event.target)
+      ) {
+        setLearnOpen(false);
+      }
+    }
+
+    document.addEventListener('pointerdown', handleOutsideTap);
+
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsideTap);
+    };
+  }, []);
 
   return (
     <header className="site-header">
-
-      {/* Brand Logo */}
       <Link to="/" className="brand">
         <div className="brand-icon">▲</div>
         <h2>
@@ -28,19 +48,16 @@ function Header() {
         </h2>
       </Link>
 
-      {/* Navigation Links */}
       <nav className="navigation">
-
         <NavLink to="/" end>
           Home
         </NavLink>
 
-        {/* Learn Dropdown */}
-        <div className="learn-menu">
+        <div className="learn-menu" ref={learnMenuRef}>
           <button
             type="button"
             className={`learn-trigger ${learnOpen ? 'active' : ''}`}
-            onClick={() => setLearnOpen(!learnOpen)}
+            onClick={() => setLearnOpen((previous) => !previous)}
             aria-expanded={learnOpen}
           >
             Learn <span className="dropdown-arrow">⌄</span>
@@ -66,12 +83,10 @@ function Header() {
           )}
         </div>
 
-        {/* Explore Page */}
         <NavLink to="/explore" end>
           Explore
         </NavLink>
 
-        {/* Success Stories Page */}
         <NavLink to="/success-stories" end>
           Success Stories
         </NavLink>
@@ -83,12 +98,9 @@ function Header() {
         <NavLink to="/contact">
           Contact
         </NavLink>
-
       </nav>
 
-      {/* Right Side of Header */}
       <div className="header-right">
-
         <div className="visitor-count">
           <span>VISITS</span>
           <strong>{visits}</strong>
@@ -97,9 +109,7 @@ function Header() {
         <Link to="/explore" className="header-cta">
           Plan Your Climb <span>→</span>
         </Link>
-
       </div>
-
     </header>
   );
 }

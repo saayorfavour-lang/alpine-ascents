@@ -9,7 +9,7 @@ const stories = [
     description:
       'On 29 May 1953, Edmund Hillary and Tenzing Norgay became the first climbers confirmed to have reached the summit of Mount Everest.',
     image:
-      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85',
+      'https://i.natgeofe.com/n/323365d5-32db-4f39-88ca-8c194bd237e9/everest-anniversary-summit-hillary-tenzing_3x2.jpg',
     tag: 'HISTORIC FIRST',
   },
   {
@@ -19,7 +19,7 @@ const stories = [
     description:
       'Japanese mountaineer Junko Tabei made history by becoming the first woman to reach the summit of Mount Everest.',
     image:
-      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1000&q=85',
+      'https://images.pexels.com/photos/2174596/pexels-photo-2174596.jpeg?cs=srgb&dl=pexels-julieaagaard-2174596.jpg&fm=jpg',
     tag: 'BREAKING BARRIERS',
   },
   {
@@ -29,7 +29,7 @@ const stories = [
     description:
       'They achieved a remarkable milestone by climbing Everest without supplemental bottled oxygen, changing the limits of high-altitude mountaineering.',
     image:
-      'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1000&q=85',
+      'https://bbe-1d47e.kxcdn.com/everest-22.jpg?width=1440',
     tag: 'RECORD BREAKING',
   },
   {
@@ -39,7 +39,7 @@ const stories = [
     description:
       'Messner completed the first solo ascent of Everest, climbing without a partner during the monsoon season.',
     image:
-      'https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1000&q=85',
+      'https://images.squarespace-cdn.com/content/v1/64f0890949139c4947c60372/1695753689351-OS0C29PM3U08LPB0VEMP/dani-arnold-matterhorn-speed-record-6.jpg',
     tag: 'SOLO ACHIEVEMENT',
   },
   {
@@ -49,7 +49,7 @@ const stories = [
     description:
       'Sherpa mountaineer Nawang Gombu became the first person to reach the summit of Everest twice, in 1963 and 1965.',
     image:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85',
+      'https://ucarecdn.com/7b8c177d-7504-47e9-b1e2-44d1c2bf6d91/-/format/auto/-/preview/3000x3000/-/quality/lighter/HIMALI%208000%20Meter%20Down%20Suite%20Galactic%20Teal%20Tendi%20Sherpa%20on%20Mountain.webp',
     tag: 'MOUNTAINEERING LEGEND',
   },
   {
@@ -59,7 +59,7 @@ const stories = [
     description:
       'Pasang Lhamu Sherpa became the first Nepali woman to reach Everest’s summit, inspiring generations of climbers.',
     image:
-      'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1000&q=85',
+     'https://images.pexels.com/photos/13169503/pexels-photo-13169503.jpeg?cs=srgb&dl=pexels-leyla-helvaci-50263565-13169503.jpg&fm=jpg',
     tag: 'INSPIRATION',
   },
   {
@@ -69,7 +69,7 @@ const stories = [
     description:
       'Babu Chiri Sherpa spent approximately 21 hours on the summit of Everest, setting a remarkable endurance milestone at extreme altitude.',
     image:
-      'https://images.unsplash.com/photo-1517299321609-52687d1bc55a?auto=format&fit=crop&w=1000&q=85',
+      'https://cdn.shopify.com/s/files/1/0651/8358/0220/files/everyday-hiking-heroes-remy-kloos-4.jpg',
     tag: 'ENDURANCE',
   },
   {
@@ -79,7 +79,7 @@ const stories = [
     description:
       'British climber Alison Hargreaves reached Everest’s summit alone without supplemental oxygen, achieving an extraordinary mountaineering feat.',
     image:
-      'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1000&q=85',
+      'https://medien.srf.ch/documents/20142/2180129/5854760.jpg/2cd55984-85b8-6110-a8f2-a001dcb79602?t=1610007573152',
     tag: 'SOLO ACHIEVEMENT',
   },
   {
@@ -89,7 +89,7 @@ const stories = [
     description:
       'Spanish climber Edurne Pasaban completed all fourteen of the world’s 8,000-metre peaks, a major achievement in high-altitude mountaineering.',
     image:
-      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1000&q=85',
+       'https://images.openai.com/static-rsc-4/8v00IH7fANIqzXoaTE4D521xl8RoqwMneheWfRiVp1axpuRcNFHFr1TFw1V_DBwjAFUkS1g09C7XsLrcb08dB4PQGLmWdcYfCrBeEw4l8Lask9H-bpjR9MMMLiir7nz9PJJ-6jezQdoxPndp10SEvV7dV4B_YzHC3_1GXTOm_7g5xstffl93giEBwyDN1gA7?purpose=inline',
     tag: 'WORLD FIRST',
   },
 ];
@@ -98,9 +98,10 @@ function SuccessStoriesSection() {
   return (
     <section className="aa-page">
       <div className="aa-container">
-
         <div className="aa-heading">
-          <span className="aa-eyebrow">COURAGE. PASSION. DETERMINATION.</span>
+          <span className="aa-eyebrow">
+            COURAGE. PASSION. DETERMINATION.
+          </span>
           <h1>Success Stories</h1>
           <p>
             Meet the climbers who pushed beyond limits and made
@@ -149,9 +150,10 @@ function SuccessStoriesSection() {
 
         <div className="aa-bottom-note">
           <span>EVERY SUMMIT HAS A STORY</span>
-          <p>Be inspired by those who dared to go beyond the ordinary.</p>
+          <p>
+            Be inspired by those who dared to go beyond the ordinary.
+          </p>
         </div>
-
       </div>
     </section>
   );
