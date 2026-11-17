@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import contact from '../data/contact.json';
-import { gmailLink } from '../utils/gmail';
+import { gmailLink } from '../utils/gmail.js';
 import './Footer.css';
 
 const pageLinks = [
