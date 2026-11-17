@@ -1,11 +1,8 @@
-
 .learn-page {
-  background: #F4F0E6;
+  background: #E8E9E1;
   color: #252722;
   min-height: 100vh;
 }
-
-
 .learn-hero {
   min-height: 390px;
   position: relative;
@@ -17,8 +14,8 @@
       rgba(20, 28, 24, 0.58),
       rgba(20, 28, 24, 0.68)
     ),
-    url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b")
-    center 45% / cover no-repeat;
+    url('/images/learn-mountain.jpg')
+    center 65% / cover no-repeat;
 }
 
 .learn-overlay {
